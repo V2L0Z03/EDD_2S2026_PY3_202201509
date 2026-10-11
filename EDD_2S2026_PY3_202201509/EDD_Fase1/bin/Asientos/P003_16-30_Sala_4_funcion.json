@@ -1,0 +1,12 @@
+{
+    "asientos": [
+        {
+            "cliente": "U002",
+            "codigo_reserva": "R003",
+            "columna": 6,
+            "fila": 3
+        }
+    ],
+    "columnas": 6,
+    "filas": 3
+}

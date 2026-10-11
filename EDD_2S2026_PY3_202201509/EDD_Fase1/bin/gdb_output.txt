@@ -1,0 +1,8 @@
+[New Thread 5508.0x3d20]
+[New Thread 5508.0x3a4c]
+[New Thread 5508.0x5be8]
+[Thread 5508.0x3d20 exited with code 3221225781]
+[Thread 5508.0x3a4c exited with code 3221225781]
+[Thread 5508.0x4904 exited with code 3221225781]
+During startup program exited with code 0xc0000135.
+No stack.

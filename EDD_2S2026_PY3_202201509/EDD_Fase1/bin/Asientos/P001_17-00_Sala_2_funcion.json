@@ -1,0 +1,12 @@
+{
+    "asientos": [
+        {
+            "cliente": "Juanito Alimaña",
+            "codigo_reserva": "",
+            "columna": 5,
+            "fila": 2
+        }
+    ],
+    "columnas": 5,
+    "filas": 5
+}

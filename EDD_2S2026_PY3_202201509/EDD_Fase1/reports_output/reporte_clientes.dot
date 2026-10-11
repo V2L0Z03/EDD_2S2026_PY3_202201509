@@ -1,0 +1,93 @@
+digraph ArbolB {
+    graph [label="Gestión de Clientes — Árbol B Orden 4\nTotal Clientes: 7", labelloc=t, fontsize=15, fontname="Helvetica"];
+    node  [fontname="Helvetica", fontsize=10];
+    edge  [arrowhead=vee, arrowsize=0.8];
+    rankdir=TB;
+    leyenda [shape=plaintext, fontsize=10, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="4"><TR><TD BGCOLOR="#A3C4F3"> Raíz </TD><TD BGCOLOR="#F4A261"> Interno </TD><TD BGCOLOR="#FFF2CC"> Hoja </TD></TR></TABLE>>];
+
+    b_1776443126640 [shape=none, margin=0, label=<
+      <TABLE BORDER="2" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#A3C4F3" COLOR="#2563EB">
+        <TR><TD COLSPAN="5" BGCOLOR="#2563EB"><FONT COLOR="white"><B>RAIZ | 2 clave(s)</B></FONT></TD></TR>
+        <TR>
+          <TD PORT="p0" WIDTH="12" HEIGHT="20" BGCOLOR="#2563EB"> </TD>
+          <TD ALIGN="LEFT" BGCOLOR="#A3C4F3"><FONT COLOR="#1E3A5F"><B>ID: U002</B><BR/>María López<BR/><FONT POINT-SIZE="8">maria.lopez@gmail.com</FONT></FONT></TD>
+          <TD PORT="p1" WIDTH="12" HEIGHT="20" BGCOLOR="#2563EB"> </TD>
+          <TD ALIGN="LEFT" BGCOLOR="#A3C4F3"><FONT COLOR="#1E3A5F"><B>ID: U004</B><BR/>Ana Ramírez<BR/><FONT POINT-SIZE="8">ana.ramirez@gmail.com</FONT></FONT></TD>
+          <TD PORT="p2" WIDTH="12" HEIGHT="20" BGCOLOR="#2563EB"> </TD>
+        </TR>
+      </TABLE>>];
+    b_1776443123760 [shape=none, margin=0, label=<
+      <TABLE BORDER="2" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#FFF2CC" COLOR="#D4A017">
+        <TR><TD COLSPAN="3" BGCOLOR="#D4A017"><FONT COLOR="white"><B>HOJA | 1 clave(s)</B></FONT></TD></TR>
+        <TR>
+          <TD PORT="p0" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+          <TD ALIGN="LEFT" BGCOLOR="#FFF2CC"><FONT COLOR="#5A4502"><B>ID: U001</B><BR/>Juanito Alimaña<BR/><FONT POINT-SIZE="8">juanito@gmail.com</FONT></FONT></TD>
+          <TD PORT="p1" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+        </TR>
+      </TABLE>>];
+    b_1776443126720 [shape=none, margin=0, label=<
+      <TABLE BORDER="2" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#FFF2CC" COLOR="#D4A017">
+        <TR><TD COLSPAN="3" BGCOLOR="#D4A017"><FONT COLOR="white"><B>HOJA | 1 clave(s)</B></FONT></TD></TR>
+        <TR>
+          <TD PORT="p0" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+          <TD ALIGN="LEFT" BGCOLOR="#FFF2CC"><FONT COLOR="#5A4502"><B>ID: U003</B><BR/>Carlos Méndez<BR/><FONT POINT-SIZE="8">carlos.mendez@gmail.com</FONT></FONT></TD>
+          <TD PORT="p1" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+        </TR>
+      </TABLE>>];
+    b_1776443123360 [shape=none, margin=0, label=<
+      <TABLE BORDER="2" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#FFF2CC" COLOR="#D4A017">
+        <TR><TD COLSPAN="7" BGCOLOR="#D4A017"><FONT COLOR="white"><B>HOJA | 3 clave(s)</B></FONT></TD></TR>
+        <TR>
+          <TD PORT="p0" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+          <TD ALIGN="LEFT" BGCOLOR="#FFF2CC"><FONT COLOR="#5A4502"><B>ID: U005</B><BR/>Luis Pérez<BR/><FONT POINT-SIZE="8">luis.perez@gmail.com</FONT></FONT></TD>
+          <TD PORT="p1" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+          <TD ALIGN="LEFT" BGCOLOR="#FFF2CC"><FONT COLOR="#5A4502"><B>ID: U006</B><BR/>Sofía Castillo<BR/><FONT POINT-SIZE="8">sofia.castillo@gmail.com</FONT></FONT></TD>
+          <TD PORT="p2" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+          <TD ALIGN="LEFT" BGCOLOR="#FFF2CC"><FONT COLOR="#5A4502"><B>ID: UC007</B><BR/>Cali<BR/><FONT POINT-SIZE="8">cali@gmail.com</FONT></FONT></TD>
+          <TD PORT="p3" WIDTH="12" HEIGHT="20" BGCOLOR="#D4A017"> </TD>
+        </TR>
+      </TABLE>>];
+
+    b_1776443126640:p0 -> b_1776443123760 [color="#555555"];
+    b_1776443126640:p1 -> b_1776443126720 [color="#555555"];
+    b_1776443126640:p2 -> b_1776443123360 [color="#555555"];
+
+    // Estadísticas
+    stats_node [shape=plaintext, margin=0, label=<
+      <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+        <TR><TD COLSPAN="2" BGCOLOR="#FCA5A5"><B>Estadísticas Tabla Hash</B></TD></TR>
+        <TR><TD>Tamaño de Tabla</TD><TD>13</TD></TR>
+        <TR><TD>Total Reservas</TD><TD>6</TD></TR>
+        <TR><TD>Buckets Ocupados</TD><TD>6</TD></TR>
+        <TR><TD>Colisiones</TD><TD>0</TD></TR>
+      </TABLE>>];
+
+    // Buckets de la Tabla Hash
+    node [shape=record, style=filled, fillcolor="#D1FAE5", fontcolor="black"];
+    bucket_0 [label="<f0> Índice 0"];
+    hashnode_0_0 [fillcolor="#FEF08A", label="Reserva: R001\nU001 -> F001"];
+    bucket_0:f0 -> hashnode_0_0;
+    bucket_1 [label="<f0> Índice 1"];
+    hashnode_1_0 [fillcolor="#FEF08A", label="Reserva: R002\nU002 -> F002"];
+    bucket_1:f0 -> hashnode_1_0;
+    bucket_2 [label="<f0> Índice 2"];
+    hashnode_2_0 [fillcolor="#FEF08A", label="Reserva: R003\nU003 -> F003"];
+    bucket_2:f0 -> hashnode_2_0;
+    bucket_3 [label="<f0> Índice 3"];
+    hashnode_3_0 [fillcolor="#FEF08A", label="Reserva: R004\nU004 -> F004"];
+    bucket_3:f0 -> hashnode_3_0;
+    bucket_4 [label="<f0> Índice 4"];
+    hashnode_4_0 [fillcolor="#FEF08A", label="Reserva: R005\nU005 -> F005"];
+    bucket_4:f0 -> hashnode_4_0;
+    bucket_5 [label="<f0> Índice 5"];
+    hashnode_5_0 [fillcolor="#FEF08A", label="Reserva: R006\nU006 -> F006"];
+    bucket_5:f0 -> hashnode_5_0;
+    bucket_6 [label="<f0> Índice 6"];
+    bucket_7 [label="<f0> Índice 7"];
+    bucket_8 [label="<f0> Índice 8"];
+    bucket_9 [label="<f0> Índice 9"];
+    bucket_10 [label="<f0> Índice 10"];
+    bucket_11 [label="<f0> Índice 11"];
+    bucket_12 [label="<f0> Índice 12"];
+    { rank=same; bucket_0; bucket_1; bucket_2; bucket_3; bucket_4; bucket_5; bucket_6; bucket_7; bucket_8; bucket_9; bucket_10; bucket_11; bucket_12; }
+}

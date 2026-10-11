@@ -1,0 +1,19 @@
+digraph ArbolBST {
+    graph [label="Cartelera de Peliculas (Arbol BST)", labelloc=t, fontsize=16, fontname="Helvetica"];
+    node [shape=box, style=filled, fontname="Helvetica", fontsize=11];
+    edge [color="#555555"];
+    leyenda [shape=plaintext, label="Verde = En cartelera | Azul = Proximo estreno | Dorado = Retiro en 7 dias", fontsize=10];
+    node_P001 [label="Código: P001\nTítulo: Avatar 3\nDuración: 180 min\nClasif.: B15", fillcolor="#F59E0B", fontcolor="#0D1117"];
+    node_P001 -> node_P002;
+    node_P002 [label="Código: P002\nTítulo: Intensamente 2\nDuración: 100 min\nClasif.: AA", fillcolor="#F59E0B", fontcolor="#0D1117"];
+    node_P002 -> node_P003;
+    node_P003 [label="Código: P003\nTítulo: Jurassic World: Renace\nDuración: 134 min\nClasif.: B", fillcolor="#F59E0B", fontcolor="#0D1117"];
+    node_P003 -> node_P004;
+    node_P004 [label="Código: P004\nTítulo: Los Cuatro Fantásticos\nDuración: 125 min\nClasif.: B12", fillcolor="#F59E0B", fontcolor="#0D1117"];
+    node_P004 -> node_P005;
+    node_P005 [label="Código: P005\nTítulo: Cómo entrenar a tu dragón\nDuración: 116 min\nClasif.: A", fillcolor="#F59E0B", fontcolor="#0D1117"];
+    node_P005 -> node_P007;
+    node_P007 [label="Código: P007\nTítulo: Superman\nDuración: 129 min\nClasif.: B", fillcolor="#F59E0B", fontcolor="#0D1117"];
+    node_P007 -> node_P008;
+    node_P008 [label="Código: P008\nTítulo: Calificacion\nDuración: 150 min\nClasif.: b12", fillcolor="#2ECC71", fontcolor="#0D1117"];
+}

@@ -1,0 +1,21 @@
+digraph MatrizDispersa {
+    graph [label="Mapa de Asientos — Matriz Dispersa\nTotal: 25 | Libres: 25 | Reservados: 0", labelloc=t, fontsize=14, fontname="Helvetica"];
+    node [fontname="Helvetica", fontsize=10, style=filled];
+    rankdir=LR;
+    root [label="Sala\n5 x 5", shape=box, fillcolor="#21262D", fontcolor=white];
+    stats [label="Estadísticas\nTotal: 25\nLibres: 25\nReservados: 0", shape=note, fillcolor="#3B82F6", fontcolor=white];
+    root -> stats [style=dotted, color=gray];
+    { rank=same;
+        col_header_0 [label="F\\C", shape=box, fillcolor="#30363D", fontcolor=white];
+        col_1 [label="Col 1", shape=box, fillcolor="#30363D", fontcolor=white];
+        col_2 [label="Col 2", shape=box, fillcolor="#30363D", fontcolor=white];
+        col_3 [label="Col 3", shape=box, fillcolor="#30363D", fontcolor=white];
+        col_4 [label="Col 4", shape=box, fillcolor="#30363D", fontcolor=white];
+        col_5 [label="Col 5", shape=box, fillcolor="#30363D", fontcolor=white];
+    }
+    col_header_0 -> col_1 [style=invis];
+    col_1 -> col_2 [style=invis];
+    col_2 -> col_3 [style=invis];
+    col_3 -> col_4 [style=invis];
+    col_4 -> col_5 [style=invis];
+}

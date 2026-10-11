@@ -1,0 +1,17 @@
+digraph ArbolAVL {
+    graph [label="Catálogo de Funciones (Arbol AVL)", labelloc=t, fontsize=16, fontname="Helvetica"];
+    node [style=filled, fontname="Helvetica", fontsize=10];
+    edge [color="#555555"];
+    leyenda [shape=plaintext, label="Verde = Programada | Rojo = Realizada", fontsize=10];
+    avl_node_F004 [label="Cod: F004\nPeli: P005\nFecha:  16:15\nSala: Sala 5 | $0\nAlt: 3 | FE: 0", shape=circle, fillcolor="#2ECC71", fontcolor="#0D1117"];
+    avl_node_F004 -> avl_node_F002 [label="I"];
+    avl_node_F002 [label="Cod: F002\nPeli: P003\nFecha:  19:00\nSala: Sala 3 | $0\nAlt: 2 | FE: 0", shape=circle, fillcolor="#2ECC71", fontcolor="#0D1117"];
+    avl_node_F002 -> avl_node_F001 [label="I"];
+    avl_node_F001 [label="Cod: F001\nPeli: P001\nFecha:  17:00\nSala: Sala 2 | $0\nAlt: 1 | FE: 0", shape=circle, fillcolor="#2ECC71", fontcolor="#0D1117"];
+    avl_node_F002 -> avl_node_F003 [label="D"];
+    avl_node_F003 [label="Cod: F003\nPeli: P004\nFecha:  20:30\nSala: Sala 4 | $0\nAlt: 1 | FE: 0", shape=circle, fillcolor="#2ECC71", fontcolor="#0D1117"];
+    avl_node_F004 -> avl_node_F006 [label="D"];
+    avl_node_F006 [label="Cod: F006\nPeli: P007\nFecha:  18:45\nSala: Sala 1 | $0\nAlt: 2 | FE: -1", shape=circle, fillcolor="#2ECC71", fontcolor="#0D1117"];
+    avl_node_F006 -> avl_node_F007 [label="D"];
+    avl_node_F007 [label="Cod: F007\nPeli: P008\nFecha: 2026-09-18 18:00\nSala: Sala 1 | $45\nAlt: 1 | FE: 0", shape=circle, fillcolor="#2ECC71", fontcolor="#0D1117"];
+}

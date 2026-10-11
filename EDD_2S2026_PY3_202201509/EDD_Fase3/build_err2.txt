@@ -1,0 +1,43 @@
+﻿if not exist "bin" mkdir "bin"
+if not exist "build\structures" mkdir "build\structures"
+if not exist "build\models" mkdir "build\models"
+if not exist "build\services" mkdir "build\services"
+g++ -std=c++17 -Wall -Iinclude -Iinclude/vendor -DASIO_STANDALONE -o bin/servidor.exe build/structures/ListaDobleBeneficios.o build/structures/ListaCircularPromos.o build/structures/ListaCircularDobleSolicitudes.o build/structures/ListaReservas.o build/structures/EstructuraClientes.o build/structures/ArbolB.o build/structures/ArbolBST.o build/structures/ArbolAVL.o build/structures/MatrizDispersa.o build/main.o -lws2_32
+mingw32-make : C:/msys64/ucrt64/bin/../lib/gcc/x86
+_64-w64-mingw32/16.1.0/../../../../x86_64-w64-ming
+w32/bin/ld.exe: build/main.o:main.cpp:(.text$_ZN4a
+sio6detail10socket_ops20complete_iocp_acceptEyPvmS
+2_PyyRSt10error_code[_ZN4asio6detail10socket_ops20
+complete_iocp_acceptEyPvmS2_PyyRSt10error_code]+0x
+de): undefined reference to `GetAcceptExSockaddrs'
+En línea: 1 Carácter: 1
++ mingw32-make 2>&1 | Out-File -Encoding utf8 
+build_err2.txt
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:/m 
+   sys64/ucrt6...eptExSockaddrs':String) [], Rem  
+  oteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32
+/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe:
+ build/main.o:main.cpp:(.text$_ZN4asio6detail28win
+_iocp_socket_service_base15start_accept_opERNS1_24
+base_implementation_typeEbRNS0_13socket_holderEiii
+PvmPNS0_18win_iocp_operationE[_ZN4asio6detail28win
+_iocp_socket_service_base15start_accept_opERNS1_24
+base_implementation_typeEbRNS0_13socket_holderEiii
+PvmPNS0_18win_iocp_operationE]+0x15f): undefined 
+reference to `AcceptEx'
+C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32
+/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe:
+ build/main.o:main.cpp:(.text$_ZN4asio6detail28win
+_iocp_socket_service_base17restart_accept_opEyRNS0
+_13socket_holderEiiiPvmPlPNS0_18win_iocp_operation
+E[_ZN4asio6detail28win_iocp_socket_service_base17r
+estart_accept_opEyRNS0_13socket_holderEiiiPvmPlPNS
+0_18win_iocp_operationE]+0x141): undefined 
+reference to `AcceptEx'
+collect2.exe: error: ld returned 1 exit status
+mingw32-make: *** [Makefile:32: bin/servidor.exe] 
+Error 1
