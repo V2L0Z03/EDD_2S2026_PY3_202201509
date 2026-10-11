@@ -1,7 +1,0 @@
-﻿if not exist "bin" mkdir "bin"
-if not exist "build\structures" mkdir "build\structures"
-if not exist "build\models" mkdir "build\models"
-if not exist "build\services" mkdir "build\services"
-if not exist "build\ui" mkdir "build\ui"
-if not exist "reports_output" mkdir "reports_output"
-if not exist "Asientos" mkdir "Asientos"

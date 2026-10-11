@@ -13,6 +13,7 @@ SRC = src/structures/ListaDobleBeneficios.cpp \
       src/structures/ArbolAVL.cpp \
       src/structures/MatrizDispersa.cpp \
       src/services/JSONReader.cpp \
+      src/services/GrafoReporter.cpp \
       src/main.cpp
 
 OBJ = $(SRC:src/%.cpp=build/%.o)

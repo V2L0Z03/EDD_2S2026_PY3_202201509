@@ -1,0 +1,7 @@
+graph GrafoSedes {
+    graph [label="RED CINEMATOGRÁFICA — GRAFO DE SEDES\nCinemaUSAC (Total Sedes: 0, Conexiones: 0)", labelloc=t, fontsize=18, fontname="Helvetica-Bold", bgcolor="#0A0F1E", fontcolor="#F0F4FF", pad="0.5", nodesep="0.8"];
+    node [shape=box, style="filled,rounded", fillcolor="#1E293B", fontcolor="#F8FAFC", fontname="Helvetica", fontsize=11, color="#6366F1", penwidth=2.0];
+    edge [color="#818CF8", fontcolor="#F59E0B", fontname="Helvetica-Bold", fontsize=10, penwidth=2.0];
+
+    vacio [label="(Sin Sedes Registradas)", shape=plaintext, fontcolor="#94A3B8"];
+}

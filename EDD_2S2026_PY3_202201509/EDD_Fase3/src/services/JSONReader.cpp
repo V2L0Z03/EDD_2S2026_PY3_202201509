@@ -358,7 +358,7 @@ ResultadoCarga JSONReader::cargarCargaMasiva(
                     continue;   // no insertar en el AVL
                 }
 
-                Funcion func(codFunc, codigo, fecha, hora, sala, precio);
+                Funcion func(codFunc, codigo, fecha, hora, sala, precio, codSede);
                 if (arbolFunciones.insertar(func)) {
                     resultado.funcionesCargadas++;
                 } else {
@@ -372,6 +372,9 @@ ResultadoCarga JSONReader::cargarCargaMasiva(
                 std::string("[PELÍCULA ERROR] ") + e.what());
         }
     }
+
+    // ── Recalcular aristas y ponderaciones del Grafo de Sedes (Fase 3 - Sección 3) ──
+    grafoSedes.recalcularAristas(arbolFunciones);
 
     std::cout << "[CargaMasiva] Sedes=" << resultado.sedesCargadas
               << " Peliculas=" << resultado.peliculasCargadas

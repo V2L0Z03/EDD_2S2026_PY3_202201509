@@ -46,75 +46,212 @@
         <button onclick="logout()" class="logout-btn">⏻ Cerrar Sesión</button>
     </header>
 
+    <!-- NAVEGACIÓN POR PESTAÑAS -->
+    <nav class="nav-tabs">
+        <button id="tab-btn-carga" class="tab-btn active" onclick="cambiarTab('carga')">
+            📂 Carga Masiva
+        </button>
+        <button id="tab-btn-grafo" class="tab-btn" onclick="cambiarTab('grafo')">
+            🕸️ Análisis de Red & Grafo
+        </button>
+    </nav>
+
     <main class="dashboard-content">
 
-        <!-- Tarjeta de Carga Masiva -->
-        <div class="glass-card card-upload">
-            <div class="card-header">
-                <span class="card-icon">📂</span>
-                <div>
-                    <h3>Carga Masiva de Datos</h3>
-                    <p class="card-desc">Carga el archivo <code>peliculas.json</code> para registrar sedes, películas y funciones en el sistema.</p>
+        <!-- ───────────────────────────────────────────── -->
+        <!-- PESTAÑA 1: CARGA MASIVA                       -->
+        <!-- ───────────────────────────────────────────── -->
+        <div id="tab-pane-carga" class="tab-pane active">
+
+            <!-- Tarjeta de Carga Masiva -->
+            <div class="glass-card card-upload">
+                <div class="card-header">
+                    <span class="card-icon">📂</span>
+                    <div>
+                        <h3>Carga Masiva de Datos</h3>
+                        <p class="card-desc">Carga el archivo <code>peliculas.json</code> para registrar sedes, películas y funciones en el sistema.</p>
+                    </div>
+                </div>
+
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-icon">📁</div>
+                    <p class="drop-text">Arrastra tu archivo <strong>JSON</strong> aquí</p>
+                    <p class="drop-sub">o haz clic para seleccionarlo</p>
+                    <input type="file" id="json-file-input" accept=".json" hidden>
+                </div>
+
+                <div id="file-info" class="file-info hidden">
+                    <span class="file-icon">✅</span>
+                    <span id="file-name-display">archivo.json</span>
+                    <button id="clear-file-btn" class="clear-btn" onclick="limpiarArchivo()">✕</button>
+                </div>
+
+                <button id="upload-btn" class="primary-btn upload-btn" disabled onclick="ejecutarCargaMasiva()">
+                    <span class="btn-text">⬆ Ejecutar Carga Masiva</span>
+                </button>
+            </div>
+
+            <!-- Consola de Logs -->
+            <div class="glass-card card-console">
+                <div class="card-header">
+                    <span class="card-icon">🖥️</span>
+                    <div>
+                        <h3>Consola de Resultados</h3>
+                        <p class="card-desc">Bitácora de la última operación de carga masiva.</p>
+                    </div>
+                    <button onclick="limpiarConsola()" class="clear-console-btn" title="Limpiar consola">🗑</button>
+                </div>
+                <div id="log-console" class="log-console">
+                    <p class="log-placeholder">Los resultados de la carga masiva aparecerán aquí...</p>
                 </div>
             </div>
 
-            <div id="drop-zone" class="drop-zone">
-                <div class="drop-icon">📁</div>
-                <p class="drop-text">Arrastra tu archivo <strong>JSON</strong> aquí</p>
-                <p class="drop-sub">o haz clic para seleccionarlo</p>
-                <input type="file" id="json-file-input" accept=".json" hidden>
+            <!-- Tarjeta de resumen estadístico -->
+            <div class="glass-card card-stats hidden" id="stats-card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h3>Resumen de Carga</h3>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item stat-sedes">
+                        <span class="stat-num" id="stat-sedes">0</span>
+                        <span class="stat-label">Sedes</span>
+                    </div>
+                    <div class="stat-item stat-pelis">
+                        <span class="stat-num" id="stat-pelis">0</span>
+                        <span class="stat-label">Películas</span>
+                    </div>
+                    <div class="stat-item stat-funcs">
+                        <span class="stat-num" id="stat-funcs">0</span>
+                        <span class="stat-label">Funciones</span>
+                    </div>
+                    <div class="stat-item stat-rejected">
+                        <span class="stat-num" id="stat-rejected">0</span>
+                        <span class="stat-label">Rechazadas</span>
+                    </div>
+                </div>
             </div>
 
-            <div id="file-info" class="file-info hidden">
-                <span class="file-icon">✅</span>
-                <span id="file-name-display">archivo.json</span>
-                <button id="clear-file-btn" class="clear-btn" onclick="limpiarArchivo()">✕</button>
-            </div>
-
-            <button id="upload-btn" class="primary-btn upload-btn" disabled onclick="ejecutarCargaMasiva()">
-                <span class="btn-text">⬆ Ejecutar Carga Masiva</span>
-            </button>
         </div>
 
-        <!-- Consola de Logs -->
-        <div class="glass-card card-console">
-            <div class="card-header">
-                <span class="card-icon">🖥️</span>
-                <div>
-                    <h3>Consola de Resultados</h3>
-                    <p class="card-desc">Bitácora de la última operación de carga masiva.</p>
-                </div>
-                <button onclick="limpiarConsola()" class="clear-console-btn" title="Limpiar consola">🗑</button>
-            </div>
-            <div id="log-console" class="log-console">
-                <p class="log-placeholder">Los resultados de la carga masiva aparecerán aquí...</p>
-            </div>
-        </div>
+        <!-- ───────────────────────────────────────────── -->
+        <!-- PESTAÑA 2: ANÁLISIS DE RED & GRAFO (FASE 3)   -->
+        <!-- ───────────────────────────────────────────── -->
+        <div id="tab-pane-grafo" class="tab-pane">
 
-        <!-- Tarjeta de resumen estadístico (se rellena post-carga) -->
-        <div class="glass-card card-stats hidden" id="stats-card">
-            <div class="card-header">
-                <span class="card-icon">📊</span>
-                <h3>Resumen de Carga</h3>
+            <!-- 1. Calculadora de Ruta BFS (Camino Mínimo) -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <span class="card-icon">🧭</span>
+                    <div>
+                        <h3>Ruta Óptima de Sedes (BFS)</h3>
+                        <p class="card-desc">Encuentra el camino con menor cantidad de sedes intermedias (saltos mínimos).</p>
+                    </div>
+                </div>
+
+                <div class="select-group">
+                    <div class="select-item">
+                        <label for="bfs-origen">Sede de Origen</label>
+                        <select id="bfs-origen" class="glass-select">
+                            <option value="">Selecciona origen...</option>
+                        </select>
+                    </div>
+                    <div class="select-item">
+                        <label for="bfs-destino">Sede de Destino</label>
+                        <select id="bfs-destino" class="glass-select">
+                            <option value="">Selecciona destino...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="btn-calcular-bfs" class="primary-btn" onclick="calcularCaminoCortoBFS()">
+                    <span class="btn-text">🔍 Calcular Ruta Más Corta</span>
+                </button>
+
+                <div id="bfs-resultado-contenedor" class="bfs-result-box hidden">
+                    <div id="bfs-badge-saltos" class="bfs-summary-badge">
+                        <span>🎯 Saltos totales:</span>
+                        <strong id="bfs-saltos-valor">0</strong>
+                    </div>
+                    <div id="bfs-ruta-flow" class="route-flow"></div>
+                </div>
             </div>
-            <div class="stats-grid">
-                <div class="stat-item stat-sedes">
-                    <span class="stat-num" id="stat-sedes">0</span>
-                    <span class="stat-label">Sedes</span>
+
+            <!-- 2. Ranking de Conexiones de Sedes -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <span class="card-icon">🏆</span>
+                    <div>
+                        <h3>Ranking de Afinidad de Catálogo</h3>
+                        <p class="card-desc">Aristas ordenadas descendentemente por películas en común entre sedes.</p>
+                    </div>
+                    <button class="sec-btn" onclick="cargarRankingAristas()" title="Actualizar Ranking">🔄 Refrescar</button>
                 </div>
-                <div class="stat-item stat-pelis">
-                    <span class="stat-num" id="stat-pelis">0</span>
-                    <span class="stat-label">Películas</span>
-                </div>
-                <div class="stat-item stat-funcs">
-                    <span class="stat-num" id="stat-funcs">0</span>
-                    <span class="stat-label">Funciones</span>
-                </div>
-                <div class="stat-item stat-rejected">
-                    <span class="stat-num" id="stat-rejected">0</span>
-                    <span class="stat-label">Rechazadas</span>
+
+                <div class="table-container">
+                    <table class="ranking-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Sede A</th>
+                                <th>Sede B</th>
+                                <th>Afinidad</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-table-body">
+                            <tr>
+                                <td colspan="4" style="text-align:center;color:var(--text-dim);padding:1.5rem">
+                                    Carga un archivo de datos para calcular el ranking de afinidad.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+            <!-- 3. Reportes Gráficos con Graphviz -->
+            <div class="glass-card card-full">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <div>
+                        <h3>Visualizador de Reportes Graphviz en Tiempo Real</h3>
+                        <p class="card-desc">Genera y compila dinámicamente representaciones visuales del Grafo de Sedes y la Lista de Adyacencia.</p>
+                    </div>
+                </div>
+
+                <div class="report-controls">
+                    <button id="btn-ver-grafo-sedes" class="sec-btn active" onclick="mostrarReporte('sedes')">
+                        🌐 Grafo de Sedes (Completo)
+                    </button>
+                    <button id="btn-ver-lista-ady" class="sec-btn" onclick="mostrarReporte('adyacencia')">
+                        📋 Estructura Lista de Adyacencia
+                    </button>
+                    <button class="sec-btn" onclick="regenerarReporteActual()">
+                        ⚡ Forzar Renderizado PNG
+                    </button>
+                </div>
+
+                <div class="report-viewer-card">
+                    <div id="reporte-loading" class="hidden" style="color:var(--text-muted);font-weight:600;padding:2rem;">
+                        ⚙️ Compilando con Graphviz (dot)...
+                    </div>
+                    <div class="report-img-wrapper" id="reporte-img-container">
+                        <img id="reporte-imagen" class="report-img" src="" alt="Reporte Graphviz" style="display:none;">
+                        <p id="reporte-placeholder" style="color:var(--text-muted);padding:2rem;text-align:center;">
+                            Haz clic en alguno de los reportes para generar y visualizar la imagen en tiempo real.
+                        </p>
+                    </div>
+                    <div class="report-actions" id="reporte-actions" style="display:none;">
+                        <a id="btn-descargar-dot" href="#" target="_blank" class="sec-btn">
+                            📄 Ver Archivo .DOT
+                        </a>
+                        <button class="sec-btn" onclick="abrirModalImagen()">
+                            🔍 Zoom Pantalla Completa
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </main>
@@ -126,23 +263,56 @@
         <div class="header-left">
             <span class="header-logo">🎬</span>
             <div>
-                <h2>Taquilla USAC</h2>
+                <h2>CinemaUSAC · Portal de Clientes</h2>
                 <span class="header-sub" id="client-welcome">Bienvenido</span>
             </div>
         </div>
         <button onclick="logout()" class="logout-btn">⏻ Cerrar Sesión</button>
     </header>
-    <main class="dashboard-content">
+
+    <main class="dashboard-content" style="grid-template-columns: 1fr; display: flex; flex-direction: column;">
+        
+        <!-- Módulo de Sedes Recomendadas y Similares -->
         <div class="glass-card">
             <div class="card-header">
-                <span class="card-icon">🎟️</span>
-                <h3>Tus Reservaciones</h3>
+                <span class="card-icon">✨</span>
+                <div>
+                    <h3>Sedes Recomendadas por Afinidad de Cartelera</h3>
+                    <p class="card-desc">Selecciona tu sede habitual para descubrir sedes que comparten películas similares en su cartelera.</p>
+                </div>
             </div>
-            <p style="color:var(--text-muted);padding:1rem 0">
-                La cartelera interactiva y el módulo de reservaciones estarán disponibles en la próxima sección.
-            </p>
+
+            <div class="client-hero">
+                <div class="select-item" style="max-width: 400px;">
+                    <label for="client-sede-select">Tu Sede Habitual</label>
+                    <select id="client-sede-select" class="glass-select" onchange="cargarSedesSimilaresCliente()">
+                        <option value="">Selecciona tu sede...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="client-similares-container">
+                <p id="client-placeholder" style="color:var(--text-muted);padding:1.5rem 0;">
+                    Selecciona una sede arriba para ver recomendaciones de cartelera con afinidad directa.
+                </p>
+                <div id="client-cards-grid" class="client-cards-grid hidden"></div>
+            </div>
         </div>
+
     </main>
+</div>
+
+<!-- ═══════════════════ MODAL ZOOM IMAGEN ═══════════════════ -->
+<div id="image-modal" class="modal-overlay hidden" onclick="cerrarModalImagen(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h3 id="modal-titulo">Visualización de Reporte</h3>
+            <button class="clear-btn" onclick="cerrarModalImagen()">✕</button>
+        </div>
+        <div class="modal-body">
+            <img id="modal-img" src="" alt="Reporte en pantalla completa">
+        </div>
+    </div>
 </div>
 
 <script src="script.js"></script>

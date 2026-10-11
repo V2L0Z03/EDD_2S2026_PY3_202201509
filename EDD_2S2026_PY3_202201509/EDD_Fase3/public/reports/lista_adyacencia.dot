@@ -1,0 +1,26 @@
+digraph ListaAdyacencia {
+    graph [rankdir=LR, label="ESTRUCTURA DE DATOS — LISTA DE ADYACENCIA\nCinemaUSAC", labelloc=t, fontsize=18, fontname="Helvetica-Bold", bgcolor="#0A0F1E", fontcolor="#F0F4FF", pad="0.5"];
+    node [fontname="Helvetica", fontsize=11, style=filled];
+    edge [color="#6366F1", fontcolor="#E2E8F0", fontname="Helvetica", fontsize=10, penwidth=1.5];
+
+    // Nodos Principales de Vértices
+    v_S003 [label="Vértice: S003\nCinemaUSAC Zona 1", shape=box, fillcolor="#4F46E5", fontcolor="#FFFFFF", color="#818CF8", penwidth=2.0];
+    v_S002 [label="Vértice: S002\nCinemaUSAC Zona 4", shape=box, fillcolor="#4F46E5", fontcolor="#FFFFFF", color="#818CF8", penwidth=2.0];
+    v_S001 [label="Vértice: S001\nCinemaUSAC Zona 10", shape=box, fillcolor="#4F46E5", fontcolor="#FFFFFF", color="#818CF8", penwidth=2.0];
+
+    // Alineación vertical de cabeceras
+    v_S003 -> v_S002 [style=invis];
+    v_S002 -> v_S001 [style=invis];
+
+    // Listas enlazadas de aristas adyacentes
+    null_S003 [label="NULL", shape=plaintext, fontcolor="#94A3B8", fontsize=10];
+    v_S003 -> null_S003 [color="#94A3B8", style=dashed];
+    ady_S002_0 [label="Dest: S001\nCinemaUSAC Zona 10\nPeso: 1", shape=ellipse, fillcolor="#059669", fontcolor="#FFFFFF", color="#34D399", penwidth=1.5];
+    v_S002 -> ady_S002_0 [label="sig"];
+    null_S002 [label="NULL", shape=plaintext, fontcolor="#94A3B8", fontsize=10];
+    ady_S002_0 -> null_S002 [color="#94A3B8", style=dashed];
+    ady_S001_0 [label="Dest: S002\nCinemaUSAC Zona 4\nPeso: 1", shape=ellipse, fillcolor="#059669", fontcolor="#FFFFFF", color="#34D399", penwidth=1.5];
+    v_S001 -> ady_S001_0 [label="sig"];
+    null_S001 [label="NULL", shape=plaintext, fontcolor="#94A3B8", fontsize=10];
+    ady_S001_0 -> null_S001 [color="#94A3B8", style=dashed];
+}
